@@ -4,7 +4,7 @@ import React from "react";
 const LargeCardSurah = ({oneSurah, type}) => {
   return (
     <Link to={type === "quran" ? `/surah/${oneSurah.nomor}` : `/tafsir/${oneSurah.nomor}`}>
-      <div className="flex flex-col h-full p-4 bg-primary shadow-none rounded-xl bg-gray-700  transition duration-1000 cursor-pointer hover:shadow-primary transform hover:-translate-y-2">
+      <div className="flex flex-col h-full p-4 bg-primary shadow-none rounded-xl bg-gray-600  transition duration-1000 cursor-pointer hover:shadow-primary transform hover:-translate-y-2">
         <div className="flex flex-grow items-start justify-between">
           <p className="font-primary text-xs font-bold text-emerald-600 h-6 w-6 flex items-center justify-center rounded-lg bg-emerald-200">
             {oneSurah.nomor}

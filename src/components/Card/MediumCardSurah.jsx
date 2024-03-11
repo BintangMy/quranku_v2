@@ -5,7 +5,7 @@ import AudioPlayer from "../Button/Audio";
 const MediumCardSurah = ({ oneAyat }) => {
   return (
     <>
-      <div className="lg:mx-16 lg:translate-x-10 my-3 flex flex-col h-full p-4 bg-primary shadow-none rounded-xl bg-gray-700  transition duration-1000 cursor-pointer hover:shadow-primary transform hover:-translate-y-2">
+      <div className="lg:mx-16 my-3 flex flex-col h-full p-4 bg-primary shadow-none rounded-xl bg-gray-400  transition duration-1000 cursor-pointer hover:shadow-primary transform hover:-translate-y-2">
         <div className="relative items-start justify-between">
           <div className="flex flex-col">
             <p className="font-primary font-bold absolute text-xs text-emerald-600 h-8 w-8 flex items-center justify-center rounded-md bg-emerald-200">
