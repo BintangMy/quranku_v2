@@ -1,0 +1,1 @@
+export const FETCH_ALL_ASMAUL_HUSNA = "asmaul_husna/all" 
