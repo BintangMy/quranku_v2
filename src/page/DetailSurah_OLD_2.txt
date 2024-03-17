@@ -2,20 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchDetailSurah } from "../stores/actionCreator/quranActionCreator";
-import { FaRegShareSquare } from "react-icons/fa";
+import { FaRegShareSquare xcq} from "react-icons/fa";
 import Layout from "../components/Layout";
-// import MediumCardSurah from "../components/Card/MediumCardSurah";
+import MediumCardSurah from "../components/Card/MediumCardSurah";
 import Footer from "../components/footer/Footer";
-
-// MediumCardSurah
-
-// import React from "react";
-
-import { FaRegHeart, FaHeart, FaRegBookmark, FaBookmark } from "react-icons/fa";
-import { FiShare2, FiLink2 } from "react-icons/fi";
-import { IoPlayOutline, IoSearch } from "react-icons/io5";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const DetailSurah = () => {
   const { oneSurah } = useSelector((state) => state.quran);
@@ -26,24 +16,6 @@ const DetailSurah = () => {
   useEffect(() => {
     dispatch(fetchDetailSurah(id)).then(() => isLoading(false));
   }, [dispatch, id]);
-
-  const notify = () =>
-    toast.success("Link berhasil di salin", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
-  const copyUrlToClipboard = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    notify();
-  };
 
   if (loading) {
     return (
@@ -65,13 +37,8 @@ const DetailSurah = () => {
           <div className="lg:mx-16 my-3 flex flex-col h-full p-4 bg-primary shadow-none rounded-xl bg-gray-600  transition duration-1000 cursor-pointer text-white">
             <div className="head flex justify-between items-center">
               <div className="surah-name">
-                <div className="text-3xl">
-                  {oneSurah.namaLatin} - {oneSurah.nama}
-                </div>
-                <div>
-                  {oneSurah.arti} - {oneSurah.jumlahAyat} ayat -{" "}
-                  {oneSurah.tempatTurun}
-                </div>
+                <div className="text-3xl">{oneSurah.namaLatin} - {oneSurah.nama}</div>
+                <div>{oneSurah.arti} - {oneSurah.jumlahAyat} ayat - {oneSurah.tempatTurun}</div>
               </div>
               <div className="surah-number">
                 <div class="relative flex items-center justify-center text-white row-start-1 row-end-3">
@@ -106,7 +73,7 @@ const DetailSurah = () => {
               </select>
               <div className="flex justify-between items-center w-6/12 p-2 rounded-md bg-gray-900 ">
                 <p>Tafsir</p>
-                <FaRegShareSquare />
+                <FaRegShareSquare/>
               </div>
             </div>
           </div>
@@ -120,53 +87,8 @@ const DetailSurah = () => {
           )}
         </div>
 
-        {oneSurah.ayat.map((oneAyat) => {
-          return (
-            <div className="lg:mx-16 my-3 flex flex-col h-full p-4 bg-primary shadow-none rounded-xl bg-gray-600  transition duration-1000  text-white">
-              <div className="relative items-start justify-between ">
-                <ToastContainer
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  theme="dark"
-                />
-                <div className="text-[#00957b]">
-                  {oneSurah.nomor} : {oneAyat.nomorAyat}
-                </div>
-
-                <p className="font-arabic text-2xl font-medium text-secondary  text-right ml-10 mb-5 ">
-                  {oneAyat.teksArab}
-                </p>
-              </div>
-              <div className="flex items-end justify-between font-quicksand">
-                <div>
-                  <h2 className="font-medium tracking-wide text-sm text-[#00957b] my-1">
-                    {oneAyat.teksLatin}
-                  </h2>
-                  <p className="text-sm font-medium mt-1 ">
-                    {oneAyat.teksIndonesia}
-                  </p>
-                </div>
-              </div>
-              <div className="w-full h-[1px] my-4 bg-slate-100"></div>
-              <div className="icons ml-4 my-2 flex text-center items-center gap-5 md:gap-10 text-xl">
-                <FaRegHeart className="cursor-pointer" />
-                <FaRegBookmark className="cursor-pointer" />
-                <FiLink2
-                  className="cursor-pointer"
-                  onClick={copyUrlToClipboard}
-                />
-                <IoPlayOutline className="cursor-pointer" />
-                <IoSearch className="cursor-pointer" />
-              </div>
-            </div>
-          );
+        {oneSurah.ayat.map((el) => {
+          return <MediumCardSurah numberSurah={oneSurah.nomor} oneAyat={el} />;
         })}
         {/* <Footer /> */}
       </div>

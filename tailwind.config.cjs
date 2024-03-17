@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       arabic: ["'Noto Naskh Arabic'", "serif"],
+      quicksand: ["Quicksand", "sans-serif"],
       montserrat: ["Montserrat", "sans-serif"],
     },
   },

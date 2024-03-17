@@ -4,15 +4,11 @@ import Nav from "./nav/Nav";
 
 const Layout = ({ children, rightSidebar = false, leftSidebar = true, title }) => {
   return (
-    <div className=" bg-secondary text-primary min-h-screen bg-gray-900 text-gray-200 h-[100vh]">
+    <div className="overflow-hidden bg-secondary  text-primary min-h-screen bg-gray-800 md:pr-[100px] text-gray-200 h-[100vh]">
       <Nav rightSidebar={rightSidebar} leftSidebar={leftSidebar} title={title}/>
       <main
         className={cls(
-          `pt-24 w-min-screen md:container md:mx-[55px]  mx-4 pb-24`,
-          {
-            // "pr-0 md:pr-60": rightSidebar,
-            // "pl-0 md:pl-10": leftSidebar,
-          }
+          `mt-20 rounded-3xl justify-center items-center w-min-screen md:container md:mx-[55px]  mx-4 pb-24`
         )}
       >
         {children}

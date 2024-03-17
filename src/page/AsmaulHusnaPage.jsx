@@ -31,7 +31,19 @@ const AsmaulHusnaPage = () => {
 
   return (
     <Layout rightSidebar={true} title={"Asmaul Husna"}>
+
+<div className="overflow-y-hidden md:flex md:gap-2 md:rounded-[10px] md:translate-y-[-10px] md:translate-x-[10px]">
+        <div className="md:py-4 md:rounded-[10px] bg-slate-900 h-[100vh] md:pb-[100px] overflow-y-auto" style={{ "-ms-overflow-style": "none", "scrollbar-width": "none" }} >
+          <style>
+            {`
+              .hidden-scrollbar::-webkit-scrollbar {
+                display: none;
+              }
+            `}
+          </style>
       <AsmaulHusnaList listSurat={asmaul_husna} type={"quran"} />
+        </div>
+      </div>
      <Footer/>
     </Layout>
   );
